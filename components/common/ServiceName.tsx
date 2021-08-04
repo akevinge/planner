@@ -18,7 +18,7 @@ export default function ServiceName({ titleClassName = '' }: ServiceNameProps): 
   return (
     <span>
       <span className={titleClassName}>Nebula</span>
-      <sup className="p-1 uppercase">Beta</sup>
+      <sup className="p-1 uppercase">Alpha</sup>
     </span>
   );
 }
