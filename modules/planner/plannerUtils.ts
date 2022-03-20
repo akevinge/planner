@@ -73,3 +73,17 @@ export function reorderList<T>(list: T[], startIndex: number, endIndex: number) 
 
   return result;
 }
+
+/**
+ * This function gets degree information from the API
+ */
+export async function getDegreeData() {
+  console.log('Implement me!');
+}
+
+/**
+ * This function creates a Requirement Object for the degree planning tool
+ */
+export function createRequirementObject() {
+  console.log('Implement me!');
+}
