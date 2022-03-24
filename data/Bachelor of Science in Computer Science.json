@@ -1,0 +1,97 @@
+{
+  "name": "Bachelor of Science in Computer Science",
+  "abbreviation": "Computer Science (BS)",
+  "minimum_credit_hours": "124",
+  "subtype": "major",
+  "requirements": [
+    {
+      "type": "collection",
+      "name": "II. Major Requirements: 72 semester credit hours",
+      "required": 59,
+      "options": [
+        { "type": "course", "class_reference": "ECS 1100" },
+        { "type": "course", "class_reference": "CS 1200" },
+        { "type": "course", "class_reference": "CS 1136" },
+        { "type": "course", "class_reference": "CS 1336" },
+        { "type": "course", "class_reference": "CS 1337" },
+        { "type": "course", "class_reference": "CS 2305" },
+        { "type": "course", "class_reference": "CS 2336" },
+        { "type": "course", "class_reference": "CS 2340" },
+        {
+          "name": "Choose one",
+          "type": "collection",
+          "required": 2,
+          "courses": [
+            { "type": "course", "class_reference": "MATH 2413" },
+            { "type": "course", "class_reference": "MATH 2417" }
+          ]
+        },
+        { "type": "course", "class_reference": "MATH 2418" },
+        {
+          "name": "Choose one",
+          "type": "collection",
+          "required": 2,
+          "courses": [
+            { "type": "course", "class_reference": "MATH 2414" },
+            { "type": "course", "class_reference": "MATH 2419" }
+          ]
+        },
+        { "type": "course", "class_reference": "PHYS 2125" },
+        { "type": "course", "class_reference": "PHYS 2126" },
+        { "type": "course", "class_reference": "PHYS 2325" },
+        { "type": "course", "class_reference": "PHYS 2326" },
+        { "type": "course", "class_reference": "CS 3162" },
+        { "type": "course", "class_reference": "CS 3305" },
+        { "type": "course", "class_reference": "CS 3341" },
+        { "type": "course", "class_reference": "CS 3345" },
+        { "type": "course", "class_reference": "CS 3354" },
+        { "type": "course", "class_reference": "CS 3377" },
+        { "type": "course", "class_reference": "ECS 3390" },
+        { "type": "course", "class_reference": "CS 4141" },
+        { "type": "course", "class_reference": "CS 4337" },
+        { "type": "course", "class_reference": "CS 4341" },
+        { "type": "course", "class_reference": "CS 4347" },
+        { "type": "course", "class_reference": "CS 4348" },
+        { "type": "course", "class_reference": "CS 4349" },
+        { "type": "course", "class_reference": "CS 4384" },
+        { "type": "course", "class_reference": "CS 4485" },
+        {
+          "type": "other",
+          "description": "CS guided electives are 4000 level CS courses approved by the student's CS advisor. The following courses may be used as guided electives without the explicit approval of an advisor:"
+        },
+        { "type": "course", "class_reference": "CS 4314" },
+        { "type": "course", "class_reference": "CS 4315" },
+        { "type": "course", "class_reference": "CS 4334" },
+        { "type": "course", "class_reference": "CS 4336" },
+        { "type": "course", "class_reference": "CS 4352" },
+        { "type": "course", "class_reference": "CS 4353" },
+        { "type": "course", "class_reference": "CS 4361" },
+        { "type": "course", "class_reference": "CS 4365" },
+        { "type": "course", "class_reference": "CS 4375" },
+        { "type": "course", "class_reference": "CS 4376" },
+        { "type": "course", "class_reference": "CS 4386" },
+        { "type": "course", "class_reference": "CS 4389" },
+        { "type": "course", "class_reference": "CS 4390" },
+        { "type": "course", "class_reference": "CS 4391" },
+        { "type": "course", "class_reference": "CS 4392" },
+        { "type": "course", "class_reference": "CS 4393" },
+        { "type": "course", "class_reference": "CS 4394" },
+        { "type": "course", "class_reference": "CS 4395" },
+        { "type": "course", "class_reference": "CS 4396" },
+        { "type": "course", "class_reference": "CS 4397" },
+        { "type": "course", "class_reference": "CS 4398" },
+        { "type": "course", "class_reference": "CS 4399" },
+        { "type": "course", "class_reference": "EE 4325" },
+        { "type": "course", "class_reference": "SE 4351" },
+        { "type": "course", "class_reference": "SE 4352" },
+        { "type": "course", "class_reference": "SE 4367" },
+        { "type": "course", "class_reference": "SE 4381" },
+        {
+          "type": "other",
+          "required": 0,
+          "description": "Any other organized CS 4300-level course"
+        }
+      ]
+    }
+  ]
+}

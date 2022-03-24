@@ -30,14 +30,14 @@ interface Requirement {
   name: string;
   id: string;
   status: boolean;
-  totalCredits: number;
+  totalRequired: number;
 }
 
 /**
  * Generic interface for requirements that contain other requirements
  */
 interface RequirementWrapper<T extends Requirement> extends Requirement {
-  fulfilledCredits: number;
+  fulfilled: number;
   requirements: Array<T>;
 }
 
@@ -56,7 +56,7 @@ type DegreeRequirement = RequirementWrapper<CategoryRequirement> & {
 /**
  * Requirements for a category within a degree (i.e. Core Curriculum)
  */
-type CategoryRequirement = RequirementWrapper<SectionRequirement>;
+type CategoryRequirement = RequirementWrapper<CourseRequirement | CourseGroupRequirement>;
 
 /**
  * Requirements for a section within a category (i.e. Major Prepatory Courses)
@@ -71,7 +71,13 @@ type CourseRequirement = Requirement & Course;
 /**
  * Requirements for a required set of credits inside a section (i.e. pick 6 credits for 030 Core Curriculum)
  */
-type CourseGroupRequirement = RequirementWrapper<CourseRequirement>;
+type CourseGroupRequirement = RequirementWrapper<CourseRequirement> & {
+  selected: Array<CourseRequirement>;
+};
+
+type OtherRequirement = Requirement & {
+  description: string;
+};
 
 export type {
   CategoryRequirement,
@@ -79,6 +85,8 @@ export type {
   CourseGroupRequirement,
   CourseRequirement,
   DegreeRequirement,
+  DegreeType,
+  OtherRequirement,
   PlanRequirements,
   SectionRequirement,
 };

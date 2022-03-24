@@ -1,6 +1,16 @@
+import { v4 as uuid } from 'uuid';
+
 import { RecentSemester } from '../../components/planner/PlannerContainer';
 import DUMMY_PLAN from '../../data/add_courses.json';
 import { Semester, SemesterCode, StudentPlan } from '../common/data';
+import {
+  CategoryRequirement,
+  CourseGroupRequirement,
+  CourseRequirement,
+  DegreeRequirement,
+  DegreeType,
+  OtherRequirement,
+} from './types';
 
 // Initial value for plan until data is properly loaded
 export const initialPlan: StudentPlan = {
@@ -84,6 +94,111 @@ export async function getDegreeData() {
 /**
  * This function creates a Requirement Object for the degree planning tool
  */
-export function createRequirementObject() {
-  console.log('Implement me!');
+export function createRequirementObject(degreeObject) {
+  // Create Degree Object
+  const degree: DegreeRequirement = {
+    name: degreeObject.abbreviation,
+    fulfilled: 0,
+    requirements: [],
+    id: uuid(),
+    status: false,
+    totalRequired: degreeObject.minimum_credit_hours,
+    type: 'major' as unknown as DegreeType,
+  };
+
+  // Build Category Requirements
+  const categories = degreeObject.requirements;
+  degree.requirements = categories.map((category) => {
+    // Create category object
+    const categoryObj: CategoryRequirement = {
+      fulfilled: 0,
+      status: false,
+      name: category.name,
+      id: uuid(),
+      requirements: [],
+      totalRequired: category.required,
+    };
+    // Build Course Requirements to category object
+    const courses = category.options;
+    const requirements = courses.map((requirement) => {
+      // Create CourseRequirement object
+      if (requirement.type === 'course') {
+        // Get Course data from API
+        const courseObj: CourseRequirement = {
+          name: requirement.class_reference,
+          id: uuid(),
+          status: false,
+          totalRequired: 1,
+          title: requirement.class_reference,
+          catalogCode: requirement.class_reference,
+          description: 'Coming Soon!',
+          creditHours: 0,
+        };
+        return courseObj;
+      } else if (requirement.type === 'other') {
+        // Other Type
+        const otherObj: OtherRequirement = {
+          name: 'Other Requirement',
+          id: uuid(),
+          status: false,
+          totalRequired: 1,
+          description: requirement.description,
+        };
+        return otherObj;
+      } else {
+        // Create CourseGroup Object
+        const courseGroupObj: CourseGroupRequirement = {
+          name: requirement.name,
+          status: false,
+          id: uuid(),
+          totalRequired: requirement.required,
+          requirements: [],
+          fulfilled: 0,
+          selected: [],
+        };
+
+        // Put all courses into course group
+        const courseGroupCourses = requirement.courses.map((course) => {
+          if (requirement.type === 'course') {
+            // Get Course data from API
+            const courseObj: CourseRequirement = {
+              name: requirement.class_reference,
+              id: uuid(),
+              status: false,
+              totalRequired: 1,
+              title: requirement.class_reference,
+              catalogCode: requirement.class_reference,
+              description: 'Coming Soon!',
+              creditHours: 0,
+            };
+            return courseObj;
+          } else {
+            // Other Type
+            const otherObj: OtherRequirement = {
+              name: 'Other Requirement',
+              id: uuid(),
+              status: false,
+              totalRequired: 1,
+              description: requirement.description,
+            };
+            return otherObj;
+          }
+        });
+        courseGroupObj.requirements = courseGroupCourses;
+        return courseGroupObj;
+      }
+    });
+    categoryObj.requirements = requirements;
+    return categoryObj;
+  });
+  return degree;
 }
+
+/**
+ * This function creates course map & marks courses that appear on a user's degree plan
+ * multiple times
+ */
+
+/**
+ * This function fills requirement object out with all courses user has taken
+ */
